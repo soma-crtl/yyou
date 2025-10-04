@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proposal 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom right, #ffe4ec, #ffc6e0, #ff99c8);
+      overflow-x: hidden; /* allow vertical scroll */
+    }
+    h1 {
+      font-size: 3rem;
+      color: #e60073;
+      margin-top: 50px;
+      animation: bounce 2s infinite;
+      text-shadow: 2px 2px #fff;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #333;
+      margin: 20px auto;
+      max-width: 600px;
+      background: rgba(255,255,255,0.6);
+      padding: 15px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #ff4d94;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #e60073;
+    }
+    .hidden {
+      display: none;
+    }
+    .message-box {
+      margin-top: 30px;
+      background: #fff;
+      border: 4px solid #ff99c8;
+      border-radius: 30px;
+      padding: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    @keyframes floatHearts {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
+    .heart {
+      position: fixed; /* changed from absolute */
+      bottom: 0;
+      font-size: 24px;
+      color: #ff4d94;
+      animation: floatHearts 6s linear infinite;
+      pointer-events: none; /* allows clicking through hearts */
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 To the One Who Owns My Heart 💖</h1>
+  <p>You’re the sparkle in my stars, the smile in my days, and the beat of my heart. Every moment with you feels like magic ✨.</p>
+
+  <button onclick="openHeart()">Open My Heart 💌</button>
+
+  <div id="message" class="hidden">
+    <div class="message-box">
+      <h2>💕 I Have Something To Tell You... 💕</h2>
+      <p><i>You are my sunshine on cloudy days, my calm in the chaos, and my favorite reason to believe in forever. 🌸</i></p>
+      <h3>Will you let me hold your hand forever and be my one and only? 💍</h3>
+      <button onclick="acceptLove()">Yes 💕</button>
+      <button onclick="acceptLove()">Absolutely 😍</button>
+    </div>
+  </div>
+
+  <div id="accepted" class="hidden">
+    <div class="message-box" style="background:#ffe6f2; border-color:#ff4d94;">
+      <h2>💖 Yay! You Said Yes! 💖</h2>
+      <p>This is the happiest moment of my life. Thank you for making my world complete. 🌎✨</p>
+      <p style="font-size:1.5rem; color:#e60073; font-weight:bold;">
+        Forever starts now... with you and me. 💍💕
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function openHeart() {
+      document.getElementById("message").classList.remove("hidden");
+    }
+
+    function acceptLove() {
+      document.getElementById("message").classList.add("hidden");
+      document.getElementById("accepted").classList.remove("hidden");
+      launchConfetti();
+    }
+
+    function launchConfetti() {
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.fontSize = Math.random() * 20 + 20 + "px";
+          heart.innerHTML = "❤️";
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 6000);
+        }, i * 200);
+      }
+    }
+  </script>
+</body>
+</html>
